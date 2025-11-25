@@ -1,0 +1,220 @@
+/* starfall-style.css - đơn giản, sắc màu tươi sáng */
+body { 
+  background: linear-gradient(180deg, #ffe8f2 0%, #fff0f7 100%); 
+  font-family: 'Comic Sans MS', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+  color: #3b2b4a;
+}
+.container-fluid { 
+  background: rgba(255,255,255,0.75);
+  box-shadow: 0 8px 30px rgba(59,43,74,0.12); 
+  border-radius: 14px; 
+  padding: 18px; 
+}
+h1 marquee { 
+  font-size: 1.8rem; 
+  color: #ff79b0; 
+  text-shadow: 0 2px 6px rgba(0,0,0,0.08); 
+}
+.card { 
+  border: none; 
+  border-radius: 8px; 
+  overflow: hidden; 
+  margin-bottom: 10px; 
+}
+.card-header .btn { 
+  font-size: 20px; 
+  color: #0b8043; 
+}
+.card-body { 
+  background: linear-gradient(180deg,#fff 0%, #e8f8f0 100%); 
+}
+.card-body p { 
+  font-size: 1rem; 
+  color: #333; 
+}
+.card-body img, .card-body iframe { 
+  max-width: 100%; 
+  border-radius: 6px; 
+}
+.btn-primary { 
+  background: #ff7043; 
+  border-color: #ff7043; 
+  font-size: 16px; 
+  padding: 10px 14px; 
+}
+/* large letter style */
+.card-body .letter { 
+  font-size: 160px;         /* slightly smaller than very large but friendly */
+  color: #ff3d81;
+  background: radial-gradient(circle at 30% 20%, #fff7f9, #ffe3ef);
+  width: 220px;
+  height: 220px;
+  line-height: 220px;
+  border-radius: 20px;
+  box-shadow: 0 10px 24px rgba(0,0,0,0.08);
+  margin-bottom: 12px;
+}
+.object-img {
+  width: 260px;
+  border-radius: 14px;
+  border: 6px solid #fff;
+  box-shadow: 0 10px 24px rgba(0,0,0,0.08);
+  margin-top: 8px;
+}
+.caption {
+  color: #7a3464; 
+  font-size: 22px; 
+}
+.card-body .text-center { padding: 18px; }
+/* responsive iframe */
+.embed-responsive { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; }
+.embed-responsive iframe { position: absolute; top:0; left:0; width:100%; height:100%; border-radius: 8px; }
+/* Improve spacing on small screens */
+@media (max-width: 768px) {
+  .letter { font-size: 140px; width: 140px; height:140px; line-height:140px; }
+  .object-img { width: 220px; }
+  .card-header .btn { font-size: 18px; }
+}
+
+/* Grid layout for letters like Starfall (6 columns) */
+.letters-grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 14px;
+  max-width: 1100px;
+  margin: 20px auto;
+  padding: 8px 16px;
+}
+.letter-btn {
+  background: linear-gradient(180deg, #fff3f8 0%, #ffe6f0 100%);
+  border: 0;
+  color: #a10b4a;
+  font-weight: 900;
+  font-size: 44px;
+  padding: 28px 0;
+  border-radius: 18px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 12px 30px rgba(161,11,74,0.12);
+  transition: transform 180ms cubic-bezier(.2,.9,.3,1), box-shadow 180ms;
+}
+.letter-btn:hover { 
+  transform: translateY(-6px) scale(1.03); 
+  box-shadow: 0 18px 40px rgba(161,11,74,0.18); 
+}
+.letter-btn:active { 
+  transform: translateY(2px) scale(0.99); 
+}
+
+/* Make letter tiles larger on desktop, but adapt on mobile */
+.tile .letter-btn, .letter-btn { width: 100%; height: 110px; }
+
+@media (max-width: 900px){
+  .letters-grid { grid-template-columns: repeat(4, 1fr); }
+  .letter-btn { font-size: 38px; height: 96px; }
+}
+@media (max-width: 520px){
+  .letters-grid { grid-template-columns: repeat(3, 1fr); }
+  .letter-btn { font-size: 30px; height: 80px; border-radius: 12px; }
+  .card-body .letter { font-size: 120px; width: 140px; height: 140px; line-height: 140px; border-radius: 16px; }
+  .object-img { width: 180px; }
+}
+
+/* Popup: friendlier colors */
+.popup-overlay{
+  position: fixed;
+  inset: 0; /* top/right/bottom/left = 0 */
+  display: none; /* shown by script */
+  align-items: center;
+  justify-content: center;
+  background: rgba(255,223,237,0.55);
+  backdrop-filter: blur(6px) saturate(120%);
+  z-index: 9999;
+  padding: 24px;
+}
+
+.popup-card{
+  background: #fff;
+  border-radius: 18px;
+  padding: 20px;
+  max-width: 920px;
+  width: 100%;
+  box-shadow: 0 30px 80px rgba(59,43,74,0.18);
+  transform-origin: center center;
+  will-change: transform, opacity;
+  overflow: hidden;
+}
+
+/* Initial hidden state (before open) */
+.popup-card{ transform: scale(0.92); opacity: 0; }
+
+/* Open animation */
+.popup-card.open{
+  animation: macPopIn 420ms cubic-bezier(.2,.9,.3,1) forwards;
+}
+
+@keyframes macPopIn{
+  0%   { transform: scale(0.6); opacity: 0; }
+  60%  { transform: scale(1.03); opacity: 1; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+/* Closing animation */
+.popup-card.closing{
+  animation: macPopOut 260ms cubic-bezier(.3,0,.1,1) forwards;
+}
+@keyframes macPopOut{
+  0%   { transform: scale(1); opacity: 1; }
+  100% { transform: scale(0.8); opacity: 0; }
+}
+
+/* Close button */
+.popup-close{
+  position: absolute;
+  right: 10px;
+  top: 6px;
+  background: #fff;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.12);
+  cursor: pointer;
+  color: #333;
+}
+
+/* Popup layout */
+.popup-content{
+  display: flex;
+  gap: 18px;
+  align-items: flex-start;
+}
+.popup-left{ min-width: 260px; }
+.popup-left .letter.bigmodal{ 
+  font-size: 88px; 
+  color: #ff2471; 
+  background: #fff7fb; 
+  width: 220px; 
+  height: 220px; 
+  line-height:220px; 
+  border-radius: 18px; 
+}
+.popup-img{ display:block; width:100%; max-width:260px; border-radius:10px; }
+.popup-caption{ font-weight:600; margin-top:8px; }
+.popup-wiki{ display:inline-block; margin-top:10px; }
+
+/* Small screens */
+@media (max-width:720px){
+  .popup-content{ flex-direction: column; align-items:center; }
+  .popup-left{ min-width: auto; }
+  .popup-img{ max-width:360px; }
+}
+
+/* Gentle focus styles for accessibility */
+.letter-btn:focus, .wiki-btn:focus, .popup-close:focus { 
+  outline: 3px solid rgba(255,121,176,0.28); 
+}
