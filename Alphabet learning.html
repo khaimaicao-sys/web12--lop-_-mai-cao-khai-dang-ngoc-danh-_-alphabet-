@@ -24,7 +24,7 @@
 
     <!-- Letters grid: A–Z (each button now includes a data-video embed URL) -->
     <div class="letters-grid wrap">
-      <button class="letter-btn" data-letter="A" data-img="https://placehold.co/300x200?text=Apple" data-caption="Apple" data-video="https://www.youtube.com/embed/C7iIRpzM8Bg">A</button>
+      <button class="letter-btn" data-letter="A" data-img="https://placehold.co/300x200?text=Apple" data-caption="Apple" data-video="https://www.youtube.com/embed/gsb999VSvh8?si=AiThFQU1wKywnNQy">A</button>
       <button class="letter-btn" data-letter="B" data-img="https://placehold.co/300x200?text=Ball" data-caption="Ball" data-video="https://www.youtube.com/embed/C7iIRpzM8Bg">B</button>
       <button class="letter-btn" data-letter="C" data-img="https://placehold.co/300x200?text=Cat" data-caption="Cat" data-video="https://www.youtube.com/embed/C7iIRpzM8Bg">C</button>
       <button class="letter-btn" data-letter="D" data-img="https://placehold.co/300x200?text=Dog" data-caption="Dog" data-video="https://www.youtube.com/embed/C7iIRpzM8Bg">D</button>
@@ -68,7 +68,11 @@
             <a class="popup-wiki btn btn-primary" href="#" target="_blank" rel="noopener">Learn on Wikipedia</a>
           </div>
           <div class="popup-right">
-            <div class="embed-responsive"><iframe id="popup-video" src="" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+            <div class="popup-player">
+              <img id="popup-thumb" class="popup-thumb" src="" alt="Video thumbnail" style="display:none; max-width:100%; border-radius:8px;" />
+              <button id="popup-play" class="popup-play" aria-label="Play video" style="display:none;">▶</button>
+              <div id="popup-iframe" class="popup-iframe"></div>
+            </div>
           </div>
         </div>
       </div>
@@ -80,13 +84,21 @@
       (function(){
         const overlay = document.getElementById('popup-overlay');
         const card = overlay.querySelector('.popup-card');
-        const popupVideo = document.getElementById('popup-video');
+        const popupThumb = document.getElementById('popup-thumb');
+        const popupPlay = document.getElementById('popup-play');
+        const popupIframeWrap = document.getElementById('popup-iframe');
+
+        function getYoutubeId(url){
+          if (!url) return null;
+          // support embed URLs and short URLs
+          const m = url.match(/(?:embed\/|v=|\/v\/|youtu\.be\/)([A-Za-z0-9_-]{11})/);
+          return m ? m[1] : null;
+        }
+
         function showPopup(letter, img, caption, video){
           overlay.style.display = 'flex';
-          // remove any closing class
           card.classList.remove('closing');
-          // trigger reflow so animation can restart
-          void card.offsetWidth;
+          void card.offsetWidth; // reflow
           card.classList.add('open');
 
           overlay.querySelector('#popup-letter').textContent = letter;
@@ -96,29 +108,57 @@
           overlay.querySelector('.popup-caption').textContent = caption || '';
           overlay.querySelector('.popup-wiki').href = 'https://en.wikipedia.org/wiki/' + encodeURIComponent(caption || letter);
 
-          // set video src (use embed URL provided in data-video) — do NOT autoplay
-          if (video) {
-            popupVideo.src = video + (video.includes('?') ? '&' : '?') + 'rel=0';
+          // prepare thumbnail + play button instead of preloading iframe
+          popupIframeWrap.innerHTML = '';
+          const vidId = getYoutubeId(video);
+          if (vidId){
+            popupThumb.src = 'https://img.youtube.com/vi/' + vidId + '/hqdefault.jpg';
+            popupThumb.style.display = '';
+            popupPlay.style.display = 'inline-flex';
+            popupPlay.dataset.embed = 'https://www.youtube.com/embed/' + vidId;
           } else {
-            popupVideo.src = '';
+            popupThumb.src = '';
+            popupThumb.style.display = 'none';
+            popupPlay.style.display = 'none';
+            popupPlay.dataset.embed = '';
           }
 
           // focus for keyboard users
           overlay.querySelector('.popup-close').focus();
           document.body.style.overflow = 'hidden';
         }
+
         function hidePopup(){
-          // play closing animation then hide
           card.classList.remove('open');
           card.classList.add('closing');
           document.body.style.overflow = '';
-          // stop video playback
-          popupVideo.src = '';
+          // clear iframe and reset thumbnail
+          popupIframeWrap.innerHTML = '';
+          popupThumb.style.display = '';
+          popupPlay.style.display = 'inline-flex';
           setTimeout(()=>{
             overlay.style.display = 'none';
             card.classList.remove('closing');
           }, 300);
         }
+
+        // play handler: create iframe on demand
+        popupPlay.addEventListener('click', function(){
+          const embed = this.dataset.embed;
+          if (!embed) return;
+          popupIframeWrap.innerHTML = '';
+          const iframe = document.createElement('iframe');
+          iframe.src = embed + '?rel=0&autoplay=1';
+          iframe.title = 'Letter video';
+          iframe.frameBorder = '0';
+          iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
+          iframe.allowFullscreen = true;
+          iframe.style.width = '100%';
+          iframe.style.height = '100%';
+          popupIframeWrap.appendChild(iframe);
+          popupThumb.style.display = 'none';
+          this.style.display = 'none';
+        });
 
         document.addEventListener('click', function(e){
           const btn = e.target.closest('.letter-btn');
@@ -128,7 +168,6 @@
         });
 
         overlay.addEventListener('click', function(e){
-          // close when clicking on the overlay background
           if (e.target === overlay) hidePopup();
         });
 
