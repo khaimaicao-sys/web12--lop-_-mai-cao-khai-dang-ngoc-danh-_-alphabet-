@@ -1,8 +1,61 @@
 /* starfall-style.css - đơn giản, sắc màu tươi sáng */
-body { 
-  background: linear-gradient(180deg, #ffe8f2 0%, #fff0f7 100%); 
-  font-family: 'Comic Sans MS', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+body {
+  /* Rainbow pastel theme: soft, friendly, harmonious */
+  background: linear-gradient(180deg,
+    rgba(255,102,102,0.08) 0%,   /* soft red */
+    rgba(255,178,102,0.08) 18%,  /* soft orange */
+    rgba(255,230,102,0.07) 34%,  /* soft yellow */
+    rgba(102,230,166,0.06) 52%,  /* soft green */
+    rgba(102,178,255,0.05) 72%,  /* soft blue */
+    rgba(179,102,255,0.04) 100%  /* soft violet */
+  );
+  font-family: 'Comic Sans MS', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   color: #3b2b4a;
+}
+
+/* Big rainbow image in the background (decorative). Tunable opacity via --rainbow-opacity */
+:root{ --rainbow-opacity: 0.12; }
+body{ position: relative; }
+body::before{
+  content: '';
+  position: fixed;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: -8vh; /* slightly below the fold so arc peeks up */
+  width: 1200px;
+  height: 600px;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 600'> <defs/> <g transform='translate(0,0)'> <rect width='1200' height='600' fill='none'/> <path d='M0 500 A600 500 0 0 1 1200 500 L1200 600 L0 600 Z' fill='%23ff4d4d'/> <path d='M40 520 A560 460 0 0 1 1160 520 L1160 600 L40 600 Z' fill='%23ff9a4d'/> <path d='M80 540 A520 420 0 0 1 1120 540 L1120 600 L80 600 Z' fill='%23ffd24d'/> <path d='M120 560 A480 380 0 0 1 1080 560 L1080 600 L120 600 Z' fill='%236be29b'/> <path d='M160 576 A440 364 0 0 1 1040 576 L1040 600 L160 600 Z' fill='%236bd7ff'/> <path d='M200 588 A400 388 0 0 1 1000 588 L1000 600 L200 600 Z' fill='%23a07bff'/> </g> </svg>");
+  background-repeat: no-repeat;
+  background-position: center bottom;
+  background-size: contain;
+  opacity: var(--rainbow-opacity);
+  pointer-events: none;
+  z-index: -2; /* behind content (rainbow behind animals) */
+}
+
+/* Decorative animals near rainbow (left: elephant, right: rabbit) */
+.rainbow-animal{
+  position: fixed;
+  bottom: 4vh;
+  width: 220px;
+  height: 220px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center bottom;
+  pointer-events: none;
+  z-index: -1; /* in front of rainbow but behind page content */
+  animation: floaty 6s ease-in-out infinite;
+  opacity: 0.98;
+}
+.rainbow-animal.left{ left: calc(50% - 640px); background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 240 240'> <rect width='100%' height='100%' fill='none'/> <g transform='translate(0,0)'> <ellipse cx='90' cy='150' rx='70' ry='50' fill='%23BFE6FF'/> <circle cx='80' cy='110' r='42' fill='%23B0E0E6'/> <circle cx='140' cy='110' r='36' fill='%2390D5E8'/> <rect x='25' y='120' width='28' height='48' rx='12' ry='12' fill='%23B0E0E6' transform='rotate(-20 25 120)'/> <rect x='160' y='120' width='28' height='48' rx='12' ry='12' fill='%2390D5E8' transform='rotate(20 160 120)'/> <path d='M35 110 q40 -30 80 0' stroke='%2380C8D8' stroke-width='8' fill='none' stroke-linecap='round'/> <circle cx='70' cy='100' r='6' fill='%23000'/> <circle cx='110' cy='100' r='6' fill='%23000'/> </g> </svg>"); }
+.rainbow-animal.right{ right: calc(50% - 640px); transform: scaleX(-1); background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 240 240'> <rect width='100%' height='100%' fill='none'/> <g transform='translate(0,0)'> <ellipse cx='130' cy='150' rx='70' ry='50' fill='%23FFE6F2'/> <circle cx='90' cy='110' r='42' fill='%23FFD8EA'/> <circle cx='150' cy='110' r='36' fill='%23FFB8E0'/> <path d='M70 140 q20 30 50 30 q30 0 50 -30' fill='%23FFD8EA'/> <circle cx='100' cy='100' r='6' fill='%23000'/> <circle cx='140' cy='100' r='6' fill='%23000'/> <path d='M100 120 q20 18 40 0' stroke='%23555' stroke-width='4' fill='none' stroke-linecap='round'/> </g> </svg>"); }
+
+@media (max-width: 1200px){
+  .rainbow-animal.left{ left: calc(50% - 520px); }
+  .rainbow-animal.right{ right: calc(50% - 520px); }
+}
+@media (max-width: 992px){
+  .rainbow-animal{ display: none; }
 }
 .container-fluid { 
   background: rgba(255,255,255,0.75);
@@ -36,17 +89,21 @@ h1 marquee {
   max-width: 100%; 
   border-radius: 6px; 
 }
-.btn-primary { 
-  background: #ff7043; 
-  border-color: #ff7043; 
-  font-size: 16px; 
-  padding: 10px 14px; 
+.btn-primary {
+  background: linear-gradient(90deg,#ff6b6b 0%, #ff9a4d 20%, #ffd24d 40%, #6be29b 60%, #6bd7ff 80%, #a07bff 100%);
+  border-color: rgba(160,123,255,0.3);
+  font-size: 16px;
+  padding: 10px 14px;
+  box-shadow: 0 8px 20px rgba(99,72,140,0.08);
 }
 /* large letter style */
-.card-body .letter { 
-  font-size: 160px;         /* slightly smaller than very large but friendly */
-  color: #ff3d81;
-  background: radial-gradient(circle at 30% 20%, #fff7f9, #ffe3ef);
+.card-body .letter {
+  font-size: 160px;
+  /* bold rainbow text using background-clip */
+  color: transparent;
+  background: linear-gradient(90deg,#ff4d4d 0%, #ff9a4d 20%, #ffd24d 36%, #6be29b 52%, #6bd7ff 72%, #a07bff 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
   width: 220px;
   height: 220px;
   line-height: 220px;
@@ -55,7 +112,7 @@ h1 marquee {
   margin-bottom: 12px;
 }
 .object-img {
-  width: 260px;
+  width: min(50px, 42vw);
   border-radius: 14px;
   border: 6px solid #fff;
   box-shadow: 0 10px 24px rgba(0,0,0,0.08);
@@ -86,9 +143,9 @@ h1 marquee {
   padding: 8px 16px;
 }
 .letter-btn {
-  background: linear-gradient(180deg, #fff3f8 0%, #ffe6f0 100%);
+  background: linear-gradient(135deg,#fff9f6 0%, #fff0f2 15%, #fff9e6 35%, #e9fff4 60%);
   border: 0;
-  color: #a10b4a;
+  color: #3b1740;
   font-weight: 900;
   font-size: 44px;
   padding: 28px 0;
@@ -97,12 +154,13 @@ h1 marquee {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 12px 30px rgba(161,11,74,0.12);
-  transition: transform 180ms cubic-bezier(.2,.9,.3,1), box-shadow 180ms;
+  box-shadow: 0 12px 30px rgba(91,21,80,0.08);
+  transition: transform 180ms cubic-bezier(.2,.9,.3,1), box-shadow 180ms, filter 180ms;
 }
-.letter-btn:hover { 
-  transform: translateY(-6px) scale(1.03); 
-  box-shadow: 0 18px 40px rgba(161,11,74,0.18); 
+.letter-btn:hover {
+  transform: translateY(-6px) scale(1.03);
+  box-shadow: 0 20px 50px rgba(91,21,80,0.18);
+  filter: saturate(1.08) brightness(1.02);
 }
 .letter-btn:active { 
   transform: translateY(2px) scale(0.99); 
@@ -129,25 +187,26 @@ h1 marquee {
   display: none; /* shown by script */
   align-items: center;
   justify-content: center;
-  background: rgba(255,223,237,0.55);
+  background: linear-gradient(180deg, rgba(255,77,77,0.04), rgba(255,154,77,0.03), rgba(255,210,77,0.03), rgba(108,226,155,0.02));
   backdrop-filter: blur(6px) saturate(120%);
   z-index: 9999;
   padding: 24px;
-  
+
 }
 
 .popup-card{
-  background: #fff;
+  background: linear-gradient(180deg,#ffffff 0%, #fff8f2 100%);
   border-radius: 18px;
   padding: 20px;
-  max-height: 900px;
-  height: 60%;
+  max-height: 85vh; /* allow popup to grow but not exceed viewport; larger for media-friendly iframes */
+  height: auto; /* let content determine height up to max-height */
   max-width: 920px;
   width: 100%;
-  box-shadow: 0 30px 80px rgba(59,43,74,0.18);
+  box-shadow: 0 34px 100px rgba(59,43,74,0.14);
   transform-origin: center center;
   will-change: transform, opacity;
-  overflow: hidden;
+  overflow: auto; /* enable internal scrolling when content is tall */
+  -webkit-overflow-scrolling: touch; /* smooth scrolling on iOS */
   align-items: center;
 }
 
@@ -197,17 +256,27 @@ h1 marquee {
   gap: 18px;
   align-items: flex-start;
 }
+.popup-right{ flex: 1 1 auto; min-width: 220px; }
 .popup-left{ min-width: 260px; }
-.popup-left .letter.bigmodal{ 
-  font-size: 88px; 
-  color: #ff2471; 
-  background: #fff7fb; 
-  width: 220px; 
-  height: 220px; 
-  line-height:220px; 
-  border-radius: 18px; 
+.popup-left .letter.bigmodal{
+  font-size: 88px;
+  color: transparent;
+  background: linear-gradient(135deg, #ff5ca8 0%, #ffb86b 40%, #61d4b4 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  width: 220px;
+  height: 220px;
+  line-height:220px;
+  border-radius: 18px;
 }
-.popup-img{ display:block; width:100%; max-width:260px; border-radius:10px; }
+.popup-img{
+  display: block;
+  width: min(160px, 80vw);
+  height: auto;
+  max-width: 100%;
+  border-radius: 10px;
+  object-fit: contain;
+}
 .popup-caption{ font-weight:600; margin-top:8px; }
 .popup-wiki{ display:inline-block; margin-top:10px; }
 
@@ -216,16 +285,50 @@ h1 marquee {
   .popup-content{ flex-direction: column; align-items:center; }
   .popup-left{ min-width: auto; }
   .popup-img{ max-width:360px; }
+  /* On narrow screens the iframe should be full-width within the popup and keep ratio */
+  .popup-right{ width: 100%; }
+  .popup-iframe{ max-width: 92vw; aspect-ratio: 16 / 9; height: auto; }
 }
 
 /* Gentle focus styles for accessibility */
-.letter-btn:focus, .wiki-btn:focus, .popup-close:focus { 
-  outline: 3px solid rgba(255,121,176,0.28); 
+.letter-btn:focus, .wiki-btn:focus, .popup-close:focus {
+  outline: 3px solid rgba(255,121,176,0.28);
 }
 
 .popup-iframe {
-  width: 30vw;
-  max-width: 900px;
-  height: 50vh ;
-  max-height: 1000px;
+  /* Fill available right-column space while keeping a usable aspect ratio
+     and not exceeding the popup height. */
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 9;
+  max-width: 100%;
+  /* leave room for popup paddings/close button; uses the popup-card max-height */
+  max-height: calc(85vh - 140px);
+  border-radius: 8px;
+  display: block;
 }
+
+/* Side decorations for kids: colorful illustrations on left and right (SVG data URIs) */
+/* Side decorations (SVG data URIs already defined above) */
+
+/* Avoid overlap on narrow screens */
+
+@keyframes floaty{
+  0%,100%{ transform: translateY(0); }
+  50% { transform: translateY(-12px); }
+}
+
+/* Avoid overlap on narrow screens */
+@media (max-width: 992px){
+  .side-decor{ display: none; }
+  .letters-grid{ max-width: 100%; padding: 8px; }
+}
+
+/* Parent info styling: more colorful accent */
+.parent-info .p-3{
+  background: linear-gradient(90deg,#fff 0%, #fffaf0 50%);
+  border: 2px solid rgba(255,150,120,0.14);
+}
+
+/* Slightly increase contrast for accessibility while keeping palette friendly */
+.caption{ color: #6d2b5a; }
