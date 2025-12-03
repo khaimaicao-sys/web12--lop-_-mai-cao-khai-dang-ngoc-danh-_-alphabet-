@@ -6,55 +6,77 @@
       name="viewport"
       content="width=device-width, initial-scale=1, shrink-to-fit=no"
     />
-    <link href="css/style.css" rel="stylesheet" />
-    <link href="css/starfall-style.css" rel="stylesheet" />
     <link
       rel="stylesheet"
       href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
       integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
       crossorigin="anonymous"
     />
+    <link href="starfall-style.css" rel="stylesheet" />
 
     <title>ALPHABET Gallery</title>
   </head>
   <body>
     <h1>
-      <marquee class="text-primary">Welcome to ALPHABET LEARNING</marquee>
+      <marquee class="text-primary">KHAI&DANH ALPHABET LEARNING PROGRAM</marquee>
     </h1>
+
+    <!-- Decorative images on left and right to attract children (purely visual) -->
+    <div class="side-decor left" aria-hidden="true"></div>
+    <div class="side-decor right" aria-hidden="true"></div>
+    <!-- Two animal decorations placed near the rainbow (decorative only) -->
+    <div class="rainbow-animal left" aria-hidden="true"></div>
+    <div class="rainbow-animal right" aria-hidden="true"></div>
 
     <!-- Letters grid: A–Z (each button now includes a data-video embed URL) -->
     <div class="letters-grid wrap">
-      <button class="letter-btn" data-letter="A" data-img="https://placehold.co/300x200?text=Apple" data-caption="Apple" data-video="https://www.youtube.com/embed/gsb999VSvh8?si=AiThFQU1wKywnNQy">A</button>
-      <button class="letter-btn" data-letter="B" data-img="https://placehold.co/300x200?text=Ball" data-caption="Ball" data-video="https://www.youtube.com/embed/C7iIRpzM8Bg">B</button>
-      <button class="letter-btn" data-letter="C" data-img="https://placehold.co/300x200?text=Cat" data-caption="Cat" data-video="https://www.youtube.com/embed/C7iIRpzM8Bg">C</button>
-      <button class="letter-btn" data-letter="D" data-img="https://placehold.co/300x200?text=Dog" data-caption="Dog" data-video="https://www.youtube.com/embed/C7iIRpzM8Bg">D</button>
-      <button class="letter-btn" data-letter="E" data-img="https://placehold.co/300x200?text=Egg" data-caption="Egg" data-video="https://www.youtube.com/embed/C7iIRpzM8Bg">E</button>
-      <button class="letter-btn" data-letter="F" data-img="https://placehold.co/300x200?text=Fish" data-caption="Fish" data-video="https://www.youtube.com/embed/C7iIRpzM8Bg">F</button>
+      <button class="letter-btn" data-letter="A" data-img="https://upload.wikimedia.org/wikipedia/commons/1/15/Red_Apple.jpg" data-caption="Apple" data-video="https://www.youtube.com/embed/gsb999VSvh8?si=AiThFQU1wKywnNQy">A</button>
+      <button class="letter-btn" data-letter="B" data-img="https://upload.wikimedia.org/wikipedia/commons/7/77/Playing_in_the_Nuba_mountains.jpg" data-caption="Ball" data-video="https://www.youtube.com/embed/kzzXROKd-i0?list=RDkzzXROKd-i0">B</button>
+      <button class="letter-btn" data-letter="C" data-img="https://upload.wikimedia.org/wikipedia/commons/b/b6/Felis_catus-cat_on_snow.jpg" data-caption="Cat" data-video="https://www.youtube.com/embed/1dhzPuT6jm0?list=RD1dhzPuT6jm0">C</button>
+      <button class="letter-btn" data-letter="D" data-img="https://upload.wikimedia.org/wikipedia/commons/9/d/White_dog_sleeping_on_the_floor_with_puppies_after_nursing_in_Don_Det_Laos.jpg" data-caption="Dog" data-video="https://www.youtube.com/embed/nb8DqaQmNWg?list=RDnb8DqaQmNWg">D</button>
+      <button class="letter-btn" data-letter="E" data-img="https://upload.wikimedia.org/wikipedia/commons/f/fb/Chicken_Egg_without_Eggshell_5859.jpg" data-caption="Egg" data-video="https://www.youtube.com/embed/beaUUPPUT2Y">E</button>
+      <button class="letter-btn" data-letter="F" data-img="https://upload.wikimedia.org/wikipedia/commons/0/0e/Ensenada_fish_market_2.jpg" data-caption="Fish" data-video="https://www.youtube.com/embed/gVJQL1E7BFQ?list=RDgVJQL1E7BFQ">F</button>
 
-      <button class="letter-btn" data-letter="G" data-img="https://placehold.co/300x200?text=Giraffe" data-caption="Giraffe" data-video="https://www.youtube.com/embed/C7iIRpzM8Bg">G</button>
-      <button class="letter-btn" data-letter="H" data-img="https://placehold.co/300x200?text=Hat" data-caption="Hat" data-video="https://www.youtube.com/embed/C7iIRpzM8Bg">H</button>
-      <button class="letter-btn" data-letter="I" data-img="https://placehold.co/300x200?text=Igloo" data-caption="Igloo" data-video="https://www.youtube.com/embed/C7iIRpzM8Bg">I</button>
-      <button class="letter-btn" data-letter="J" data-img="https://placehold.co/300x200?text=Juice" data-caption="Juice" data-video="https://www.youtube.com/embed/C7iIRpzM8Bg">J</button>
-      <button class="letter-btn" data-letter="K" data-img="https://placehold.co/300x200?text=Kite" data-caption="Kite" data-video="https://www.youtube.com/embed/C7iIRpzM8Bg">K</button>
-      <button class="letter-btn" data-letter="L" data-img="https://placehold.co/300x200?text=Lion" data-caption="Lion" data-video="https://www.youtube.com/embed/C7iIRpzM8Bg">L</button>
+      <button class="letter-btn" data-letter="G" data-img="https://upload.wikimedia.org/wikipedia/commons/e/ef/Giraffe-closeup-head.jpg" data-caption="Giraffe" data-video="https://www.youtube.com/embed/0KXtxIiQ7gk?list=RD0KXtxIiQ7gk">G</button>
+      <button class="letter-btn" data-letter="H" data-img="https://upload.wikimedia.org/wikipedia/commons/6/6a/Ronald_Reagan_with_cowboy_hat_2-0071M_edit.jpg" data-caption="Hat" data-video="https://www.youtube.com/embed/NtUSMBzacQ0?list=RDNtUSMBzacQ0">H</button>
+      <button class="letter-btn" data-letter="I" data-img="https://upload.wikimedia.org/wikipedia/commons/4/40/Aurora_australis_dancing_over_an_LED_illuminated_igloo.jpg" data-caption="Igloo" data-video="https://www.youtube.com/embed/P56hZEhqFCw?list=RDP56hZEhqFCw">I</button>
+      <button class="letter-btn" data-letter="J" data-img="https://upload.wikimedia.org/wikipedia/commons/6/67/Orange_juice_1_edit1.jpg" data-caption="Juice" data-video="https://www.youtube.com/embed/6KXX6fCKWes?list=RD6KXX6fCKWes">J</button>
+      <button class="letter-btn" data-letter="K" data-img="https://upload.wikimedia.org/wikipedia/commons/b/b8/Kite_flying_over_Pasing_04.jpg" data-caption="Kite" data-video="https://www.youtube.com/embed/OGVbUgqp7LQ?list=RDOGVbUgqp7LQ">K</button>
+      <button class="letter-btn" data-letter="L" data-img="https://upload.wikimedia.org/wikipedia/commons/9/9e/Lion_%28Panthera_leo%29_male_6y.jpg" data-caption="Lion" data-video="https://www.youtube.com/embed/qEXMoeYe47c?list=RDqEXMoeYe47c">L</button>
 
-      <button class="letter-btn" data-letter="M" data-img="https://placehold.co/300x200?text=Monkey" data-caption="Monkey" data-video="https://www.youtube.com/embed/C7iIRpzM8Bg">M</button>
-      <button class="letter-btn" data-letter="N" data-img="https://placehold.co/300x200?text=Nest" data-caption="Nest" data-video="https://www.youtube.com/embed/C7iIRpzM8Bg">N</button>
-      <button class="letter-btn" data-letter="O" data-img="https://placehold.co/300x200?text=Orange" data-caption="Orange" data-video="https://www.youtube.com/embed/C7iIRpzM8Bg">O</button>
-      <button class="letter-btn" data-letter="P" data-img="https://placehold.co/300x200?text=Pig" data-caption="Pig" data-video="https://www.youtube.com/embed/C7iIRpzM8Bg">P</button>
-      <button class="letter-btn" data-letter="Q" data-img="https://placehold.co/300x200?text=Queen" data-caption="Queen" data-video="https://www.youtube.com/embed/C7iIRpzM8Bg">Q</button>
-      <button class="letter-btn" data-letter="R" data-img="https://placehold.co/300x200?text=Rabbit" data-caption="Rabbit" data-video="https://www.youtube.com/embed/C7iIRpzM8Bg">R</button>
+      <button class="letter-btn" data-letter="M" data-img="https://upload.wikimedia.org/wikipedia/commons/c/c8/Monkey_eating.jpg" data-caption="Monkey" data-video="https://www.youtube.com/embed/Nvn9QvV7Aqk?list=RDNvn9QvV7Aqk">M</button>
+      <button class="letter-btn" data-letter="N" data-img="https://upload.wikimedia.org/wikipedia/commons/e/e1/Hausrotschwanz_Brutpflege_2006-05-24_11.jpg" data-caption="Nest" data-video="https://www.youtube.com/embed/qE5HEeoVGb0?list=RDqE5HEeoVGb0">N</button>
+      <button class="letter-btn" data-letter="O" data-img="https://upload.wikimedia.org/wikipedia/commons/e/e3/Oranges_-_whole-halved-segment.jpg" data-caption="Orange" data-video="https://www.youtube.com/embed/oWbY5EKys60?list=RDoWbY5EKys60">O</button>
+      <button class="letter-btn" data-letter="P" data-img="https://upload.wikimedia.org/wikipedia/commons/5/5c/Pot-bellied_pigs_in_Lisbon_Zoo_2008.jpg" data-caption="Pig" data-video="https://www.youtube.com/embed/-v1fg2Hp63s?list=RD-v1fg2Hp63s">P</button>
+      <button class="letter-btn" data-letter="Q" data-img="https://upload.wikimedia.org/wikipedia/commons/5/52/Crown_of_the_Queen_of_Norway_%28fictional%29.svg" data-caption="Queen" data-video="https://www.youtube.com/embed/NKAookrRV4s?list=RDNKAookrRV4s">Q</button>
+      <button class="letter-btn" data-letter="R" data-img="https://upload.wikimedia.org/wikipedia/commons/3/39/Lapin_blanc.jpg" data-caption="Rabbit" data-video="https://www.youtube.com/embed/gUSJeivdEH8?list=RDgUSJeivdEH8">R</button>
 
-      <button class="letter-btn" data-letter="S" data-img="https://placehold.co/300x200?text=Sun" data-caption="Sun" data-video="https://www.youtube.com/embed/C7iIRpzM8Bg">S</button>
-      <button class="letter-btn" data-letter="T" data-img="https://placehold.co/300x200?text=Tiger" data-caption="Tiger" data-video="https://www.youtube.com/embed/C7iIRpzM8Bg">T</button>
-      <button class="letter-btn" data-letter="U" data-img="https://placehold.co/300x200?text=Umbrella" data-caption="Umbrella" data-video="https://www.youtube.com/embed/C7iIRpzM8Bg">U</button>
-      <button class="letter-btn" data-letter="V" data-img="https://placehold.co/300x200?text=Violin" data-caption="Violin" data-video="https://www.youtube.com/embed/C7iIRpzM8Bg">V</button>
-      <button class="letter-btn" data-letter="W" data-img="https://placehold.co/300x200?text=Whale" data-caption="Whale" data-video="https://www.youtube.com/embed/C7iIRpzM8Bg">W</button>
-      <button class="letter-btn" data-letter="X" data-img="https://placehold.co/300x200?text=Xylophone" data-caption="Xylophone" data-video="https://www.youtube.com/embed/C7iIRpzM8Bg">X</button>
+      <button class="letter-btn" data-letter="S" data-img="https://upload.wikimedia.org/wikipedia/commons/5/55/The_sun_and_the_moon_in_South_New_Brighton%27s_beach%2C_New_Zealand.jpg" data-caption="Sun" data-video="https://www.youtube.com/embed/uSVzk2pqWB4?list=RDuSVzk2pqWB4">S</button>
+      <button class="letter-btn" data-letter="T" data-img="https://upload.wikimedia.org/wikipedia/commons/9/9e/Panthera_tigris_altaica_13_-_Buffalo_Zoo.jpg" data-caption="Tiger" data-video="https://www.youtube.com/embed/HHEqOLZ0hr4?list=RDHHEqOLZ0hr4">T</button>
+      <button class="letter-btn" data-letter="U" data-img="https://upload.wikimedia.org/wikipedia/commons/3/3a/The_Umbrella_Workshop.jpg" data-caption="Umbrella" data-video="https://www.youtube.com/embed/nPJRhEV-kF8?list=RDnPJRhEV-kF8">U</button>
+      <button class="letter-btn" data-letter="V" data-img="https://upload.wikimedia.org/wikipedia/commons/1/1b/Violin_VL100.png" data-caption="Violin" data-video="https://www.youtube.com/embed/PA47cP88ySw?list=RDPA47cP88ySw">V</button>
+      <button class="letter-btn" data-letter="W" data-img="https://upload.wikimedia.org/wikipedia/commons/6/6a/Southern_right_whale_caudal_fin-2_no_sky.JPG" data-caption="Whale" data-video="https://www.youtube.com/embed/MbUIYnDZZ-M?list=RDMbUIYnDZZ-M">W</button>
+      <button class="letter-btn" data-letter="X" data-img="https://upload.wikimedia.org/wikipedia/commons/6/6d/Nusa-Dua_Bali_Indonesia_Xylophone-player-01.jpg" data-caption="Xylophone" data-video="https://www.youtube.com/embed/RX9Pm9qj_QY?list=RDRX9Pm9qj_QY">X</button>
 
-      <button class="letter-btn" data-letter="Y" data-img="https://placehold.co/300x200?text=Yacht" data-caption="Yacht" data-video="https://www.youtube.com/embed/C7iIRpzM8Bg">Y</button>
-      <button class="letter-btn" data-letter="Z" data-img="https://placehold.co/300x200?text=Zebra" data-caption="Zebra" data-video="https://www.youtube.com/embed/C7iIRpzM8Bg">Z</button>
+      <button class="letter-btn" data-letter="Y" data-img="https://upload.wikimedia.org/wikipedia/commons/4/42/Yacht_MB01.jpg" data-caption="Yacht" data-video="https://www.youtube.com/embed/L8PdL8ydI28?list=RDL8PdL8ydI28">Y</button>
+      <button class="letter-btn" data-letter="Z" data-img="https://upload.wikimedia.org/wikipedia/commons/1/10/Zebras_Ngorongoro_Crater.jpg" data-caption="Zebra" data-video="https://www.youtube.com/embed/HysVxhemAe4?list=RDHysVxhemAe4">Z</button>
     </div>
+
+    <!-- Parent information section: short description and tips -->
+    <section class="parent-info container mt-4">
+      <div class="p-3 bg-light border rounded">
+        <h2 class="h5">GIỚI THIỆU</h2>
+        <p>Trang học này giúp trẻ làm quen với bảng chữ cái tiếng Anh qua hình ảnh, âm thanh và video ngắn. Mỗi chữ cái là một nút — nhấn để mở thẻ chứa chữ lớn, hình minh họa và video liên quan.</p>
+        <p><strong>Mục tiêu học:</strong> nhận diện chữ cái, kết nối chữ với hình ảnh và từ, cải thiện kỹ năng nghe và phát âm cơ bản.</p>
+        <p><strong>Mẹo sử dụng cùng trẻ:</strong></p>
+        <ul>
+          <li>Khuyến khích trẻ nói tên chữ và vật trong ảnh sau khi xem.</li>
+          <li>Sử dụng nút Play để xem video cùng trẻ, sau đó nhắc lại từ vựng bằng ngôn ngữ đơn giản.</li>
+          <li>Thời lượng ngắn và lặp lại thường xuyên (5–10 phút/ngày) hiệu quả nhất cho trẻ nhỏ.</li>
+        </ul>
+        <p class="mb-0"><small>Ghi chú: một số video được nhúng từ YouTube — vui lòng giám sát khi trẻ xem. Liên hệ hỗ trợ: <a href="mailto:khai.maicao@gmail.com">khai.maicao@gmail.com</a></small></p>
+      </div>
+    </section>
 
     <!-- Popup overlay for letter card -->
     <div id="popup-overlay" class="popup-overlay" style="display:none;">
@@ -78,7 +100,7 @@
       </div>
     </div>
 
-    <footer style="text-align:center;margin:18px 0">© 2025 - ABC Learn</footer>
+    <footer style="text-align:center;margin:18px 0">© Khai&Danh-Co.</footer>
 
     <script>
       (function(){
